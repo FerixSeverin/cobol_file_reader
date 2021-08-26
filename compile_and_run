@@ -1,0 +1,5 @@
+#!/bin/bash
+echo 'Compiling COBOL'
+cobc -free -x -o ./out/helloworld hello_world.cbl
+echo 'Running...'
+./out/helloworld
