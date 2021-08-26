@@ -1,5 +1,7 @@
 #!/bin/bash
 echo 'Compiling COBOL'
-cobc -free -x -o ./out/helloworld hello_world.cbl
+mkdir -p ./out
+cobc -m $2.cbl -o ./out/$2.so
+cobc -x $1.cbl -o ./out/$1
 echo 'Running...'
-./out/helloworld
+./out/$1
