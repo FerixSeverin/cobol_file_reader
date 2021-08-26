@@ -5,7 +5,7 @@
 
 
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. ARITHMETIC.
+       PROGRAM-ID. ARITHMETIC_PROGRAM.
        AUTHOR. Erik Fahlen.
        DATE-WRITTEN. 2021-08-26
        ENVIRONMENT DIVISION.
@@ -13,20 +13,14 @@
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
-       01 StartNum PIC 9(8)V99 VALUE 00001123.55.
-       01 NoZero PIC ZZZZZZZ9.99.
-       01 NoZPlusC PIC ZZ,ZZZ,ZZ9.99.
-       01 Dollar PIC $$,$$$,$$9.99.
-       01 BDay PIC 9(8) VALUE 12211974.
-       01 ADate PIC 99/99/9999.
+       01 Price PIC 9(4)V99.
+       01 TaxRate PIC V999 VALUE .075.
+       01 FullPrice PIC 9(4)V99.
 
        PROCEDURE DIVISION.
-           MOVE StartNum TO NoZero
-           DISPLAY NoZero
-           MOVE StartNum TO NoZPlusC 
-           DISPLAY NoZPlusC 
-           MOVE StartNum TO Dollar 
-           DISPLAY Dollar 
-           MOVE BDay  TO ADate 
-           DISPLAY ADate 
+           DISPLAY "Enter the Price : " WITH NO ADVANCING 
+           ACCEPT Price
+           COMPUTE FullPrice ROUNDED = Price + (Price * TaxRate)
+           DISPLAY "Price + Tax : " FullPrice .
+           
            STOP RUN.

@@ -1,7 +1,9 @@
 #!/bin/bash
 echo 'Compiling COBOL'
 mkdir -p ./out
-cobc -m $2.cbl -o ./out/$2.so
+if [ ! -z "$2" ]; then
+  cobc -m $2.cbl -o ./out/$2.so
+fi
 cobc -x $1.cbl -o ./out/$1
 echo 'Running...'
-./out/$1
+(cd out/; ./$1)
